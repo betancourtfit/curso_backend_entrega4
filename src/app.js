@@ -49,6 +49,13 @@ io.on('connection', (socket)=> {
         const products = await manager.getProducts();
         socket.emit('products-data', products);
     });
+
+    socket.on('remove-product', async (code) => {
+        console.log("inicio remove socket")
+        await manager.removeProduct(code) ;
+        const products = await manager.getProducts();
+        socket.emit('products-data', products);
+    })
 })
 
 app.use('/',viewsRouter)

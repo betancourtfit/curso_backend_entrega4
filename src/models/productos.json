@@ -91,12 +91,12 @@
   },
   {
     "id": 10,
-    "title": "Andes Origen Triguena",
-    "description": "473ml",
-    "price": 500,
-    "thumbnail": "Sin imagen",
-    "code": "abc162",
-    "stock": 330,
-    "status": true
+    "title": "1",
+    "description": "1",
+    "price": "1",
+    "thumbnail": "1",
+    "code": "1",
+    "stock": "1",
+    "status": false
   }
 ]

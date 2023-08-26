@@ -1,6 +1,7 @@
 const socket = io.connect('http://localhost:8080')
-const form = document.getElementById('idForm')
+const form = document.getElementById('addForm')
 const botonProds = document.getElementById('botonProductos')
+const removeform = document.getElementById('removeForm')
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -8,6 +9,16 @@ form.addEventListener('submit', async (e) => {
     const prod = Object.fromEntries(datForm) //De un objeto iterable genero un objeto simple
     console.log(prod)
     await socket.emit('nuevoProducto', prod)
+    await socket.emit('update-products');
+    e.target.reset()
+})
+
+removeform.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const code = removeform.elements["code"].value;
+    console.log(code)
+    await socket.emit('remove-product', code)
+    console.log(code)
     await socket.emit('update-products');
     e.target.reset()
 })

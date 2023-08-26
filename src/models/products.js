@@ -79,11 +79,15 @@ export class ProductManager {
         return this.products;
     }
     
-    removeProduct = async(id) => {
-        const index = await this.products.findIndex(product => product.id === id);
+    removeProduct = async(code) => {
+        await this.recoverProducts();
+        console.log(code)
+        console.log(this.products.code)
+        const index = await this.products.findIndex(product => product.code === code);
         if (index !== -1) {
             this.products[index].status = false;
             await fs.writeFile(this.path, JSON.stringify(this.products,null,2));
+            console.log("producto removido")
         } else {
             console.log('Producto no encontrado');
         }

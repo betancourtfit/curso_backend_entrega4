@@ -1,5 +1,5 @@
 <h1>Crear Nuevo Producto</h1>
-<form id="idForm">
+<form id="addForm">
     <div class="row">
         <div class="col-4 mb-3">
             <label class="form-label" for="title">Title</label>
@@ -44,6 +44,21 @@
     </div>
 </form><br><br>
 
+{{!-- FORMULARIO DE ELIMINACION DE PRODUCTOS --}}
+<h1>Eliminar un Producto</h1>
+<form id="removeForm">
+    <div class="row">
+        <div class="col-4 mb-3">
+            <label for="code">Code</label>
+            <input type="text" required name="code">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+    </div>
+</form>
 
 <table id="productsTable" class="table">
     <thead>
