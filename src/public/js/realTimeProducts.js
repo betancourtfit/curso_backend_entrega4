@@ -2,26 +2,20 @@ const socket = io.connect('http://localhost:8080')
 const form = document.getElementById('idForm')
 const botonProds = document.getElementById('botonProductos')
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault()
     const datForm = new FormData(e.target) //Me genera un objeto iterador
     const prod = Object.fromEntries(datForm) //De un objeto iterable genero un objeto simple
     console.log(prod)
-    socket.emit('nuevoProducto', prod)
+    await socket.emit('nuevoProducto', prod)
+    await socket.emit('update-products');
     e.target.reset()
 })
 
-// botonProds.addEventListener('click', () => {
-//     socket.on('prods', (prods) => {
-//         console.log(prods)
-//     })
-// })
 
     socket.on('products-data', (products) => {
         const tableBody = document.querySelector("#productsTable tbody");
         let tableContent = '';
-
-        console.log(products)
         if (products && Array.isArray(products)) {
         products.forEach(product => {
             tableContent += `
@@ -42,6 +36,8 @@ form.addEventListener('submit', (e) => {
     }
 
         tableBody.innerHTML = tableContent;
+        
     });
 
+    
     socket.emit('update-products');
