@@ -1,0 +1,49 @@
+<h1>Crear Nuevo Producto</h1>
+<form id="idForm">
+    <label for="title">Title</label>
+    <input type="text" required name="title">
+    <label for="description">Description</label>
+    <input type="text" required name="description">
+    <label for="category">Category</label>
+    <input type="text" required name="category">
+    <label for="price">Price</label>
+    <input type="number" required name="price">
+    <label for="thumbnail">Thumbnail</label>
+    <input type="text" required name="thumbnail">
+    <label for="stock">Stock</label>
+    <input type="number" required name="stock">
+    <label for="code">Code</label>
+    <input type="text" required name="code">
+    <button type="submit">Enviar</button>
+</form><br><br>
+
+<button id="botonProductos">Mostrar Productos</button>
+
+<table id="productsTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Thumbnail</th>
+            <th>Código</th>
+            <th>Stock</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each products}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.thumbnail}}</td>
+            <td>{{this.code}}</td>
+            <td>{{this.stock}}</td>
+            <td>{{this.status}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
